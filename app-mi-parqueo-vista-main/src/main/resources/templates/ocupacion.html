@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado de Ocupación</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="app-shell">
+    <aside class="sidebar">
+        <h2>MiParqueo</h2>
+        <nav><ul>
+            <li><a class="active" href="/ocupacion">Estado de Ocupación</a></li>
+            <li><a href="/movimientos">Movimientos Recientes</a></li>
+            <li><a href="/alertas">Alertas</a></li>
+            <li><a href="/pagos">Pagos</a></li>
+            <li><a href="/ubicacion-vehiculos">Ubicación de Vehículos</a></li>
+            <li><a href="/fidelizacion">Fidelización</a></li>
+        </ul></nav>
+    </aside>
+    <main class="page-content">
+        <header class="page-header"><div><span class="eyebrow">Monitoreo en vivo</span><h1 th:text="${title}">Estado de Ocupación</h1><p th:text="${description}">Disponibilidad actual del parqueadero.</p></div><span class="status-pill"><i></i> Actualizado ahora</span></header>
+        <section class="stat-grid"><article class="stat-card accent"><span>Ocupación total</span><strong>72%</strong><small>+4% frente a ayer</small></article><article class="stat-card"><span>Puestos ocupados</span><strong>86 <em>/ 120</em></strong><small>34 puestos disponibles</small></article><article class="stat-card"><span>Rotación promedio</span><strong>2.8 h</strong><small>Últimas 24 horas</small></article></section>
+        <section class="panel"><div class="panel-heading"><div><span class="eyebrow">Mapa del parqueadero</span><h2>Cuadrícula de puestos</h2></div><div class="legend"><span><i class="available"></i> Disponible</span><span><i class="busy"></i> Ocupado</span><span><i class="reserved"></i> Reservado</span></div></div><div class="parking-grid"><span th:each="spot : ${#numbers.sequence(1, 24)}" class="spot" th:classappend="${spot % 5 == 0 ? ' busy' : (spot % 7 == 0 ? ' reserved' : ' available')}" th:text="${'A-' + spot}">A-1</span></div></section>
+    </main>
+</body>
+</html>
